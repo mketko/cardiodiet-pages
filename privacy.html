@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CardioDiet — політика конфіденційності</title>
+<style>
+  :root { color-scheme: light dark; }
+  body {
+    max-width: 44rem; margin: 0 auto; padding: 2rem 1rem 4rem;
+    font: 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  h1 { font-size: 1.6rem; margin-bottom: .25rem; }
+  h2 { font-size: 1.15rem; margin-top: 2rem; }
+  .date { color: #666; margin-top: 0; }
+  ul { padding-left: 1.2rem; }
+  li { margin: .35rem 0; }
+  hr { margin: 3rem 0; border: none; border-top: 1px solid #ccc; }
+  code { font-size: .95em; }
+</style>
+</head>
+<body>
+
+<h1>CardioDiet — політика конфіденційності</h1>
+<p class="date">Чинна з 28 жовтня 2026 року</p>
+
+<p>CardioDiet — щоденник раціону для людей, яким важливо стежити за холестерином і жирами.
+Застосунок розробляє й поширює Максим Кетько (далі — «ми»). Ця сторінка пояснює, які дані
+застосунок тримає, куди вони потрапляють і як їх прибрати.</p>
+
+<p><strong>Коротко:</strong> усе починається на вашому телефоні. У хмару їде лише те, що потрібно
+для синхронізації між вашими пристроями, і лише якщо ви самі ввійшли в обліковий запис Google.
+Медичні записи — анкета, аналізи крові й цільовий ЛПНЩ — за замовчуванням лишаються на телефоні;
+відправити їх у хмару можна тільки окремим вибором у налаштуваннях. Реклами, аналітики й стеження
+в застосунку немає.</p>
+
+<h2>Що зберігається на телефоні</h2>
+<ul>
+  <li>щоденник: продукти, їхня вага й дати;</li>
+  <li>ваші норми (калорії, холестерин, білки, жири, вуглеводи, насичені жири);</li>
+  <li>анкета для розрахунку норм: стать, вік, зріст, вага, рівень активності та відповідь на
+      питання про серцево-судинний ризик;</li>
+  <li>аналізи крові (ліпідограма) і цільовий ЛПНЩ, який назвав ваш лікар;</li>
+  <li>власні продукти, обрані продукти, налаштування вигляду та мови;</li>
+  <li>ключ до сервісу ШІ, якщо ви його ввели — у приватному сховищі застосунку.</li>
+</ul>
+<p>Ці дані лежать у приватній теці застосунку. Інші застосунки до них доступу не мають. Видалення
+застосунку забирає їх із собою.</p>
+
+<h2>Де тримати медичні записи — ваш вибір</h2>
+<p>Анкета, аналізи крові й цільовий ЛПНЩ — це медичні записи, і застосунок не вирішує за вас, де
+вони мають лежати. Налаштування → «Дані» → «Медичні записи» дає два варіанти, і всі три записи
+переїжджають разом:</p>
+<ul>
+  <li><strong>Лише на телефоні</strong> — так за замовчуванням. Записи не йдуть нікуди. Після
+      переустановлення застосунку їх повертає лише файл резервної копії.</li>
+  <li><strong>У хмарі, у вашому обліковому записі</strong> — записи зберігаються в Cloud Firestore
+      під вашим обліковим записом Google, там, де вже лежить щоденник, і повертаються самі після
+      входу на будь-якому телефоні.</li>
+</ul>
+<p>Вибір можна змінити в будь-який момент. Якщо ви повертаєте записи на телефон, копія в хмарі
+видаляється; доки вибір — хмара, видалений на телефоні аналіз видаляється і там.</p>
+
+<h2>Що потрапляє в хмару</h2>
+<p>Тільки якщо ви ввійшли через Google. Тоді в Cloud Firestore (сервіс Google) під вашим обліковим
+записом зберігаються:</p>
+<ul>
+  <li><strong>завжди:</strong> ваші норми, обрані продукти, власні продукти та записані дні
+      раціону — щоб ті самі записи були на іншому вашому пристрої;</li>
+  <li><strong>якщо ви це обрали:</strong> анкета, аналізи крові й цільовий ЛПНЩ (див. розділ
+      вище);</li>
+  <li><strong>ніколи:</strong> ключ до сервісу ШІ.</li>
+</ul>
+<p>Доступ до цих документів має лише ваш обліковий запис: правила Firestore не впускають до них
+нікого іншого. Якщо ви не входите в обліковий запис, застосунок працює повністю локально й не
+надсилає нікуди нічого, крім випадків, описаних нижче.</p>
+
+<h2>Що надсилається стороннім сервісам</h2>
+<ul>
+  <li><strong>Сервіс ШІ, який ви обрали</strong> (Anthropic, OpenAI або Google) — знімок страви,
+      етикетки чи бланка аналізів, або назва страви, і лише тоді, коли ви самі натиснули камеру
+      або пошук за назвою. Запит іде вашим власним ключем, тобто від вашого імені й за вашим
+      договором із цим сервісом: що саме той сервіс робить із надісланим, визначають його умови, а
+      не ця політика. Знімок бланка аналізів — це медичні дані, тож це рішення щоразу ваше. Без
+      ключа ця частина застосунку просто не працює.</li>
+  <li><strong>Open Food Facts</strong> — штрихкод з упаковки, щоб дізнатися харчову цінність
+      продукту. Надсилається самий код, без фото й без будь-чого про вас.</li>
+  <li><strong>Google</strong> — вхід в обліковий запис (Firebase Authentication) і зберігання
+      даних, описаних вище (Cloud Firestore).</li>
+</ul>
+<p>Штрихкод на фото розпізнається на самому телефоні; якщо код знайдено, знімок нікуди не йде.
+Знімки, які застосунок робить камерою, лежать у його приватному кеші й перезаписуються наступним.</p>
+
+<h2>Скільки це зберігається</h2>
+<p>Дані на телефоні — доки ви не видалите запис або сам застосунок. Дані в хмарі — доки ви не
+видалите обліковий запис або не приберете запис у застосунку; резервних копій на нашому боці
+немає, бо немає й нашого сервера. Нам як розробникові ваші записи не видно: ми не маємо доступу
+до Firestore від вашого імені й не отримуємо з застосунку жодних звітів.</p>
+
+<h2>Як це захищено</h2>
+<ul>
+  <li>усе, що йде в мережу, йде шифрованим з'єднанням (HTTPS/TLS);</li>
+  <li>дані в хмарі лежать у Cloud Firestore, зашифровані на боці Google, за правилами доступу, які
+      впускають лише ваш обліковий запис;</li>
+  <li>дані на телефоні — у приватній теці застосунку, недосяжній для інших застосунків;</li>
+  <li>ключ до сервісу ШІ зберігається окремо від решти даних, ніколи не йде в хмару й не потрапляє
+      у файл резервної копії.</li>
+</ul>
+
+<h2>Чого застосунок не робить</h2>
+<ul>
+  <li>не показує реклами;</li>
+  <li>не має аналітики, лічильників і жодного стеження за поведінкою;</li>
+  <li>не передає й не продає ваші дані третім особам і не використовує їх для навчання моделей;</li>
+  <li>не збирає дані дітей і не призначений для них.</li>
+</ul>
+
+<h2>Як прибрати свої дані</h2>
+<ul>
+  <li><strong>З хмари:</strong> у застосунку — Налаштування → «Дані» → «Обліковий запис» →
+      «Видалити обліковий запис». Зникає все, що зберігалося в хмарі, і сам обліковий запис. Те
+      саме можна попросити через <a href="delete-account.html">цю сторінку</a>.</li>
+  <li><strong>З телефона:</strong> видаліть застосунок. Перед цим можна зберегти все у файл:
+      Налаштування → «Дані» → «Резервна копія» → «Зберегти у файл». У тому файлі є ваші аналізи,
+      тож тримайте його там, де тримаєте інші медичні папери.</li>
+  <li><strong>Окремі записи</strong> — у самому застосунку: день раціону, власний продукт і аналіз
+      видаляються кожен своєю кнопкою.</li>
+</ul>
+
+<h2>Ваші права</h2>
+<p>Ви можете забрати копію всього, що застосунок про вас тримає (резервна копія у файл — це вона й
+є), виправити будь-який запис у застосунку, видалити записи або весь обліковий запис і змінити
+вибір щодо медичних записів. Нічого з цього не потребує нашої участі. Якщо потрібна наша —
+напишіть на адресу нижче.</p>
+
+<h2>Застосунок не є медичним пристроєм</h2>
+<p>CardioDiet рахує те, що ви записали, і порівнює з опублікованими рекомендаціями (ВООЗ, EFSA,
+ESC/EAS та іншими, названими в розділі «Як все рахується»). Він не ставить діагнозів, не призначає
+лікування і не замінює лікаря.</p>
+
+<h2>Зміни</h2>
+<p>Якщо ця політика зміниться, нова редакція з'явиться на цій сторінці з новою датою.</p>
+
+<h2>Зв'язок</h2>
+<p>Питання про ці дані: <a href="mailto:cardiodiet.app@gmail.com">cardiodiet.app@gmail.com</a>.</p>
+
+<hr>
+
+<h1 lang="en">CardioDiet — privacy policy</h1>
+<p class="date" lang="en">In force from 28 October 2026</p>
+
+<div lang="en">
+<p>CardioDiet is a food diary for people who need to watch their cholesterol and fats. It is
+developed and distributed by Maxim Ketko ("we"). This page explains what the app holds, where it
+goes, and how to remove it.</p>
+
+<p><strong>In short:</strong> everything starts on your phone. Only what is needed to sync between
+your own devices goes to the cloud, and only if you sign in with Google. Health records — the
+answer sheet, the blood tests and the LDL target — stay on the phone by default; sending them to
+the cloud takes a separate choice in the settings. There are no ads, no analytics and no
+tracking.</p>
+
+<h2>Kept on the phone</h2>
+<ul>
+  <li>the diary: foods, their weights and dates;</li>
+  <li>your goals (calories, cholesterol, protein, fat, carbohydrate, saturated fat);</li>
+  <li>the answer sheet used to work the goals out: sex, age, height, weight, activity level and one
+      question about cardiovascular risk;</li>
+  <li>blood tests (the lipid panel) and the LDL target your doctor named;</li>
+  <li>your own foods, favourites, appearance and language settings;</li>
+  <li>the AI service key, if you entered one, in the app's private store.</li>
+</ul>
+<p>This data sits in the app's private folder, out of reach of other apps. Uninstalling the app
+takes it along.</p>
+
+<h2>Where health records live — your choice</h2>
+<p>The answer sheet, the blood tests and the LDL target are health records, and the app does not
+decide for you where they belong. Settings → "Data" → "Health records" offers two options, and all
+three records move together:</p>
+<ul>
+  <li><strong>This phone only</strong> — the default. The records go nowhere. After reinstalling the
+      app, only a backup file can bring them back.</li>
+  <li><strong>In the cloud, in your account</strong> — the records are kept in Cloud Firestore under
+      your Google account, where the diary already sits, and come back by themselves once you sign
+      in on any phone.</li>
+</ul>
+<p>You can change the choice at any time. Moving the records back to the phone deletes the cloud
+copy; while the choice is the cloud, a test deleted on the phone is deleted there too.</p>
+
+<h2>Sent to the cloud</h2>
+<p>Only if you sign in with Google. Cloud Firestore (a Google service) then holds, under your
+account:</p>
+<ul>
+  <li><strong>always:</strong> your goals, favourites, own foods and recorded days, so the same
+      records are on your other device;</li>
+  <li><strong>if you chose so:</strong> the answer sheet, the blood tests and the LDL target (see
+      the section above);</li>
+  <li><strong>never:</strong> the AI service key.</li>
+</ul>
+<p>Only your account can reach those documents: the Firestore rules let nobody else in. If you do
+not sign in, the app works entirely locally and sends nothing anywhere, apart from the cases
+below.</p>
+
+<h2>Sent to third parties</h2>
+<ul>
+  <li><strong>The AI service you choose</strong> (Anthropic, OpenAI or Google): a photo of a meal, a
+      label or a lab form, or a dish's name, and only when you press the camera or the lookup
+      button. The request uses your own key, under your own agreement with that service: what that
+      service then does with what was sent is governed by its terms, not by this policy. A photo of
+      a lab form is health data, so that decision is yours every time. Without a key this part of
+      the app simply does not work.</li>
+  <li><strong>Open Food Facts</strong>: the barcode from a package, to look its nutrition up. Only
+      the code is sent — no photo, and nothing about you.</li>
+  <li><strong>Google</strong>: sign-in (Firebase Authentication) and the storage described above
+      (Cloud Firestore).</li>
+</ul>
+<p>A barcode on a photo is read on the phone itself; if a code is found, the photo goes nowhere.
+Photos the app takes sit in its private cache and are overwritten by the next one.</p>
+
+<h2>How long it is kept</h2>
+<p>On the phone: until you delete the record or the app. In the cloud: until you delete your account
+or remove the record in the app. There are no backups on our side, because there is no server of
+ours. As the developer we cannot see your records: we have no access to Firestore on your behalf,
+and the app sends us no reports of any kind.</p>
+
+<h2>How it is protected</h2>
+<ul>
+  <li>everything that goes over the network goes over an encrypted connection (HTTPS/TLS);</li>
+  <li>cloud data sits in Cloud Firestore, encrypted on Google's side, behind access rules that let
+      only your account in;</li>
+  <li>phone data sits in the app's private folder, out of reach of other apps;</li>
+  <li>the AI service key is stored apart from the rest, never goes to the cloud, and is not in the
+      backup file.</li>
+</ul>
+
+<h2>What the app does not do</h2>
+<ul>
+  <li>no advertising;</li>
+  <li>no analytics, counters or behavioural tracking of any kind;</li>
+  <li>no sharing or selling of your data, and no using it to train models;</li>
+  <li>no collection of children's data; the app is not directed at children.</li>
+</ul>
+
+<h2>Removing your data</h2>
+<ul>
+  <li><strong>From the cloud:</strong> in the app, Settings → "Data" → "Account" → "Delete
+      account". Everything stored in the cloud and the account itself are removed. The same can be
+      requested through <a href="delete-account.html">this page</a>.</li>
+  <li><strong>From the phone:</strong> uninstall the app. You can save everything to a file first:
+      Settings → "Data" → "Backup" → "Save to a file". That file holds your blood tests, so keep it
+      where you keep your other medical papers.</li>
+  <li><strong>Single records</strong> — in the app itself: a day, a food of your own and a blood
+      test each have their own delete.</li>
+</ul>
+
+<h2>Your rights</h2>
+<p>You can take a copy of everything the app holds about you (the backup file is exactly that),
+correct any record in the app, delete records or the whole account, and change the choice about
+health records. None of this needs us. If something does, write to the address below.</p>
+
+<h2>Not a medical device</h2>
+<p>CardioDiet counts what you record and compares it with published guidance (the WHO, EFSA,
+ESC/EAS and others, each named in the app's "How it all adds up"). It does not diagnose, does not
+prescribe and does not replace a doctor.</p>
+
+<h2>Changes</h2>
+<p>If this policy changes, the new version appears on this page with a new date.</p>
+
+<h2>Contact</h2>
+<p>Questions about this data: <a href="mailto:cardiodiet.app@gmail.com">cardiodiet.app@gmail.com</a>.</p>
+</div>
+
+</body>
+</html>

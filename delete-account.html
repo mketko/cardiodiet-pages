@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CardioDiet — видалення облікового запису</title>
+<style>
+  :root { color-scheme: light dark; }
+  body {
+    max-width: 44rem; margin: 0 auto; padding: 2rem 1rem 4rem;
+    font: 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  h1 { font-size: 1.6rem; margin-bottom: .25rem; }
+  h2 { font-size: 1.15rem; margin-top: 2rem; }
+  ol, ul { padding-left: 1.2rem; }
+  li { margin: .35rem 0; }
+  .box { border: 1px solid #c33; border-radius: .5rem; padding: .75rem 1rem; margin: 1.5rem 0; }
+  hr { margin: 3rem 0; border: none; border-top: 1px solid #ccc; }
+</style>
+</head>
+<body>
+
+<h1>CardioDiet — видалення облікового запису</h1>
+<p>Застосунок: <strong>CardioDiet</strong> (<code>com.cardiodiet.app</code>).
+Розробник: <strong>Максим Кетько</strong>.</p>
+
+<h2>Найшвидший спосіб — у самому застосунку</h2>
+<ol>
+  <li>Відкрийте CardioDiet.</li>
+  <li>Торкніться шестерні вгорі праворуч — відкриються «Налаштування».</li>
+  <li>Група «Дані» → «Обліковий запис».</li>
+  <li>Натисніть «Видалити обліковий запис» і підтвердьте.</li>
+</ol>
+<p>Перевстановлювати застосунок для цього не потрібно.</p>
+
+<h2>Якщо застосунку вже немає на телефоні</h2>
+<p>Надішліть листа на <a href="mailto:cardiodiet.app@gmail.com?subject=Видалення%20облікового%20запису%20CardioDiet">cardiodiet.app@gmail.com</a>
+з темою «Видалення облікового запису CardioDiet» і вкажіть адресу Google, якою ви входили в
+застосунок. Ми видалимо обліковий запис і всі пов'язані з ним дані протягом 30 днів і відповімо,
+коли це буде зроблено.</p>
+
+<div class="box">
+  <h2 style="margin-top:0">Що саме видаляється</h2>
+  <ul>
+    <li>обліковий запис у застосунку (Firebase Authentication);</li>
+    <li>усе, що зберігалося в хмарі під ним: ваші норми, обрані продукти, власні продукти й усі
+        записані дні раціону;</li>
+    <li>медичні записи — анкета, аналізи крові й цільовий ЛПНЩ — <strong>якщо</strong> ви обрали
+        тримати їх у хмарі (Налаштування → «Дані» → «Медичні записи»). За замовчуванням вони
+        лежать лише на телефоні, і тоді в хмарі їх немає.</li>
+  </ul>
+  <p>Видалення остаточне, відновити ці дані неможливо.</p>
+  <p><strong>Що лишається на телефоні:</strong> усе, що там лежало, — записи належать вам, а не
+  обліковому запису. Ключ до сервісу ШІ в хмарі не був ніколи. Щоб прибрати і те, що на телефоні,
+  видаліть застосунок.</p>
+  <p>Перед видаленням можна зберегти все у файл: Налаштування → «Дані» → «Резервна копія» →
+  «Зберегти у файл».</p>
+</div>
+
+<p>Ми не зберігаємо ваших даних після видалення: резервних копій на нашому боці немає, бо немає й
+нашого сервера — дані лежать у Cloud Firestore під вашим обліковим записом і зникають разом із ним.</p>
+
+<p><a href="privacy.html">Політика конфіденційності</a></p>
+
+<hr>
+
+<div lang="en">
+<h1>CardioDiet — account deletion</h1>
+<p>App: <strong>CardioDiet</strong> (<code>com.cardiodiet.app</code>).
+Developer: <strong>Maxim Ketko</strong>.</p>
+
+<h2>Quickest way — inside the app</h2>
+<ol>
+  <li>Open CardioDiet.</li>
+  <li>Tap the gear at the top right — "Settings" opens.</li>
+  <li>The "Data" group → "Account".</li>
+  <li>Tap "Delete account" and confirm.</li>
+</ol>
+<p>You do not need to reinstall the app to do this.</p>
+
+<h2>If the app is no longer on your phone</h2>
+<p>Write to <a href="mailto:cardiodiet.app@gmail.com?subject=CardioDiet%20account%20deletion">cardiodiet.app@gmail.com</a>
+with the subject "CardioDiet account deletion" and the Google address you signed in with. The
+account and all data tied to it will be deleted within 30 days, and you will get a reply when it
+is done.</p>
+
+<h2>What is deleted</h2>
+<ul>
+  <li>the account itself (Firebase Authentication);</li>
+  <li>everything stored in the cloud under it: your goals, favourites, own foods and every recorded
+      day;</li>
+  <li>health records — the answer sheet, the blood tests and the LDL target — <strong>if</strong>
+      you chose to keep them in the cloud (Settings → "Data" → "Health records"). By default they
+      sit on the phone only, and then the cloud holds none of them.</li>
+</ul>
+<p>Deletion is final; this data cannot be restored.</p>
+<p><strong>What stays on the phone:</strong> everything that was there — the records belong to you,
+not to the account. The AI key was never in the cloud. To remove what is on the phone as well,
+uninstall the app. You can save everything to a file first: Settings → "Data" → "Backup" → "Save
+to a file".</p>
+
+<p>Nothing is kept after deletion: there are no backups on our side, because there is no server of
+ours — the data sits in Cloud Firestore under your account and goes when the account goes.</p>
+
+<p><a href="privacy.html">Privacy policy</a></p>
+</div>
+
+</body>
+</html>
